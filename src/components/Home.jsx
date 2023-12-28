@@ -1,18 +1,20 @@
 import React from 'react'
+import { useGlobalContext } from '../context/global';
 
 const Home = () => {
 
 
+    const {handleSubmit, 
+        search, 
+        searchAnime,
+        handleChange ,
+        getUpcomingAnime,
+        getAiringAnime,
+        getPopularAnime,
+    } = useGlobalContext()
+
     const [rendered,setRendered] = React.useState('popular');
-    const [search,setSearch] = React.useState('');
-
-    const handleChange = (e)=>{
-        setSearch(e.target.value)
-    }
-
-    const handleSubmit = (e)=>{
-        
-    }
+    
 
 
     const switchComponent = ()=>{
@@ -40,10 +42,22 @@ const Home = () => {
                 </div>
                 <form action="" className='serach-form'>
                     <div className="input-control">
-
+                        <input type="text" placeholder='Search Anime' value={search} onChange={handleChange}/>
+                        <button type="submit">Search</button>
                     </div>
                 </form>
-
+                <div className="filter-btn airing-filter">
+                        <button onClick={() => {
+                            setRendered('airing')
+                            getAiringAnime()
+                        }}>Airing</button>
+                    </div>
+                    <div className="filter-btn upcoming-filter">
+                        <button onClick={() => {
+                            setRendered('upcoming')
+                            getUpcomingAnime()
+                        }}>Upcoming</button>
+                    </div>
 
             </div>
         </header>

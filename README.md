@@ -1,6 +1,5 @@
 
 
-
 # Anime-Vault
 
 Welcome to **Anime-Vault**, your one-stop database for all things anime! 🌟
@@ -11,12 +10,13 @@ Anime-Vault is a database that brings the exciting world of anime right to your 
 
 ### Features
 
-- **Popular Anime:** Dive into the most beloved and acclaimed anime series.
-- **Upcoming Anime:** Stay ahead with our curated list of upcoming anime.
-- **Ongoing Anime:** Keep track of currently airing shows.
-- **Anime Trailers:** Watch the latest trailers and get a glimpse of the action.
-- **Character Database:** Explore detailed profiles of your favorite anime characters.
-- **Show Information:** Access major information about each show, similar to the IMDB database.
+- **Popular Animes list** 
+- **Upcoming Animes** 
+- **Ongoing Animes:** Keep track of currently airing shows.
+- **Anime Trailers:** Watch the latest trailers 
+- **Character Database:** 
+- **Show Information:** Access major information about each show, similar to the IMDB database
+- **Search your fav anime**
 
 
 ## Getting Started
@@ -24,7 +24,28 @@ Anime-Vault is a database that brings the exciting world of anime right to your 
 To get a local copy up and running, follow these simple steps:
 
 ```bash
-git clone https://github.com/yourusername/anime-vault.git
+git clone https://github.com/thisismrsanjay/anime-vault.git
 cd anime-vault
 npm install
 npm run dev
+```
+
+
+## DEMO 
+
+
+
+
+
+
+## TODO 
+- [x] - API testing
+- [x] - Routing 
+- [x] - State management
+- [x] - css (styled components)
+- [x] - popular
+- [x] - individual page
+- [x] - search functionality
+- [] - upcoming
+- [] - ongoing page
+- [] - fix Css

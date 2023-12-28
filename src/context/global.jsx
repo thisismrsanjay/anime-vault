@@ -47,6 +47,35 @@ export const GlobalContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, intialState);
     const [search, setSearch] = React.useState('');
 
+    
+
+    const handleChange = (e)=>{
+        setSearch(e.target.value)
+        if(e.target.value===""){
+            state.isSearch = false;
+        }
+    }
+
+    const searchAnime  = async(anime)=>{
+        dispatch({type: LOADING});
+
+        const response = await fetch(`https://api.jikan.moe/v4/anime?q=${anime}&order_by=popularity&sort=asc*sfw`);
+        const data = await response.json();
+        //console.log(data.data);
+        dispatch({type: SEARCH, payload: data.data})
+    }
+
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        if(search){
+            searchAnime(search);
+            state.isSearch = true;
+        }else{
+            state.isSearch = false;
+            alert("Enter valid Anime name")
+        }
+    }
+
     const getPopularAnime = async () => {
 
         dispatch({type: LOADING});
@@ -64,7 +93,7 @@ export const GlobalContextProvider = ({children}) => {
     },[])
 
     return (
-        <GlobalContext.Provider value={{...state}}>
+        <GlobalContext.Provider value={{...state,handleChange,handleSubmit,searchAnime,search}}>
             {children}
         </GlobalContext.Provider>
     )
