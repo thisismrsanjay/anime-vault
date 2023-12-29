@@ -59,7 +59,7 @@ export const GlobalContextProvider = ({children}) => {
     const searchAnime  = async(anime)=>{
         dispatch({type: LOADING});
 
-        const response = await fetch(`https://api.jikan.moe/v4/anime?q=${anime}&order_by=popularity&sort=asc*sfw`);
+        const response = await fetch(`https://api.jikan.moe/v4/anime?q=${anime}&order_by=popularity&sort=asc&sfw`);
         const data = await response.json();
         //console.log(data.data);
         dispatch({type: SEARCH, payload: data.data})
@@ -104,13 +104,20 @@ export const GlobalContextProvider = ({children}) => {
         const data = await response.json();
         dispatch({type: GET_AIRING_ANIME, payload: data.data})
     }
+
+    const getAnimePictures = async (id) => {
+        dispatch({type: LOADING})
+        const response = await fetch(`https://api.jikan.moe/v4/characters/${id}/pictures`);
+        const data = await response.json();
+        dispatch({type: GET_PICTURES, payload: data.data})
+    }
     React.useEffect(() => {
         getPopularAnime();
     
     },[])
 
     return (
-        <GlobalContext.Provider value={{...state,getAiringAnime,handleChange,handleSubmit,searchAnime,search,getPopularAnime,getUpcomingAnime}}>
+        <GlobalContext.Provider value={{...state,getAnimePictures,getAiringAnime,handleChange,handleSubmit,searchAnime,search,getPopularAnime,getUpcomingAnime}}>
             {children}
         </GlobalContext.Provider>
     )

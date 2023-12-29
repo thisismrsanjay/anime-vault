@@ -1,6 +1,9 @@
 import React from 'react'
 import { useGlobalContext } from '../context/global';
 import styled from 'styled-components'
+import Popular from './Popular';
+import Upcoming from './Upcoming';
+import Airing from './Airing';
 
 
 const Home = () => {
@@ -19,20 +22,30 @@ const Home = () => {
     
 
 
-    const switchComponent = ()=>{
+    const switchComponent = () => {
         switch(rendered){
             case 'popular':
-                return <Popular rendered={rendered}/>
+                return <Popular rendered={rendered} />
+            case 'airing':
+                return <Airing rendered={rendered} />
+            case 'upcoming':
+                return <Upcoming rendered={rendered} />
             default:
-                return <Popular rendered={rendered}/>
+                return <Popular rendered={rendered} />
         }
     }
+
   return (
     <HomePageStyled >
         <header>
+                <center>
 
+                    <h1 >Anime-Vault</h1>
+                </center>
             <div className="logo">
-                <h1>
+                
+                <br/>
+                                <h1>
                 {rendered === 'popular' ? 'Popular Anime' : 
                         rendered === 'airing' ? 'Ongoing Anime' : 'Upcoming Anime'}
                 </h1>
@@ -42,35 +55,38 @@ const Home = () => {
                 <div className="filter-btn popular-filter">
                     <button onClick={()=>setRendered('popular')}>Popular</button>
                 </div>
-                <form action="" className='serach-form'>
+                <form action="" className='serach-form' onSubmit={handleSubmit}>
                     <div className="input-control">
                         <input type="text" placeholder='Search Anime' value={search} onChange={handleChange}/>
                         <button type="submit">Search</button>
+                    </div>
+                    <div className="search-results">
+                        {/* {conditionalRender()} */}
                     </div>
                 </form>
                 <div className="filter-btn airing-filter">
                         <button onClick={() => {
                             setRendered('airing')
                             getAiringAnime()
-                        }}>Airing</button>
+                        }}>Ongoing </button>
                     </div>
                     <div className="filter-btn upcoming-filter">
                         <button onClick={() => {
                             setRendered('upcoming')
                             getUpcomingAnime()
-                        }}>Upcoming</button>
+                        }}>Upcoming </button>
                     </div>
 
             </div>
         </header>
-
+        {switchComponent()}
     </HomePageStyled>
   )
 }
 
 
 const HomePageStyled = styled.div`
-background-color:  #457b9d;
+background-color:  #023047;
 header{
     padding: 2rem 5rem;
     width: 60%;

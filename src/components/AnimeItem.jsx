@@ -106,13 +106,13 @@ const AnimeItem = () => {
 
     const AnimeItemStyled = styled.div`
     padding: 3rem 18rem;
-    background-color: #EDEDED;
+    background-color: #023047;
     h1{
         display: inline-block;
         font-size: 3rem;
         margin-bottom: 1.5rem;
         cursor: pointer;
-        background:linear-gradient( to right, #A855F7, #27AE60);
+        background:#8ecae6;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         transition: all .4s ease-in-out;
@@ -125,7 +125,7 @@ const AnimeItem = () => {
         margin: 3rem 0;
         font-size: 2rem;
         cursor: pointer;
-        background:linear-gradient( to right, #A855F7 23%, #27AE60);
+        background: 
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }

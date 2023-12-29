@@ -1,14 +1,22 @@
 import { useGlobalContext } from "../context/global"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
+import Sidebar from "./Sidebar";
 
-const Popular = () => {
+const Popular = ({rendered}) => {
 
-  const {popularAnime,isSearch} = useGlobalContext();
+  const {popularAnime,isSearch,searchResults} = useGlobalContext();
 
   const conditionalRender =()=>{
-    if(!isSearch){
-      return popularAnime.map((anime) => {
+    if(!isSearch && rendered === 'popular'){
+      return popularAnime?.map((anime) => {
+        return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
+              <img src={anime.images.jpg.large_image_url} alt="" />
+          </Link>
+
+      })
+    }else{
+      return searchResults?.map((anime) => {
         return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
               <img src={anime.images.jpg.large_image_url} alt="" />
           </Link>
@@ -22,6 +30,7 @@ const Popular = () => {
       <div className="popular-anime">
         {conditionalRender()}
       </div>
+      <Sidebar/>
     </PopularStyled>
   )
 }
@@ -32,7 +41,8 @@ const PopularStyled = styled.div`
     margin-top: 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    padding-left: 5rem;
+    padding-left: 6rem;
+    
     width : 100%;
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
