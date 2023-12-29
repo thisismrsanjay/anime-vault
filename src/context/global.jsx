@@ -80,20 +80,37 @@ export const GlobalContextProvider = ({children}) => {
 
         dispatch({type: LOADING});
 
-        const response = await fetch(`${baseUrl}/top/anime?filter=bypopularity&limit=10`);
+        const response = await fetch(`${baseUrl}/top/anime?filter=bypopularity`);
         const data = await response.json();
         //console.log(data.data);
         dispatch({type: GET_POPULAR_ANIME, payload: data.data})
     
     }
 
+    //fetch upcoming and airing anime 
+
+    const getUpcomingAnime = async () => {
+            
+            dispatch({type: LOADING});
+    
+            const response = await fetch(`${baseUrl}/top/anime?filter=upcoming`);
+            const data = await response.json();
+            //console.log(data.data);
+            dispatch({type: GET_UPCOMING_ANIME, payload: data.data})
+    }
+    const getAiringAnime = async () => {
+        dispatch({type: LOADING})
+        const response = await fetch(`${baseUrl}/top/anime?filter=airing`);
+        const data = await response.json();
+        dispatch({type: GET_AIRING_ANIME, payload: data.data})
+    }
     React.useEffect(() => {
         getPopularAnime();
     
     },[])
 
     return (
-        <GlobalContext.Provider value={{...state,handleChange,handleSubmit,searchAnime,search}}>
+        <GlobalContext.Provider value={{...state,getAiringAnime,handleChange,handleSubmit,searchAnime,search,getPopularAnime,getUpcomingAnime}}>
             {children}
         </GlobalContext.Provider>
     )

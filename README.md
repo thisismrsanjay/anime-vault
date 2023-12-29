@@ -45,7 +45,8 @@ npm run dev
 - [x] - css (styled components)
 - [x] - popular
 - [x] - individual page
+- [x] - characters page and gallery
 - [x] - search functionality
-- [] - upcoming
-- [] - ongoing page
-- [] - fix Css
+- [ ] - upcoming
+- [ ] - ongoing page
+- [ ] - fix Css
