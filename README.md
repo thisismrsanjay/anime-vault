@@ -36,6 +36,10 @@ npm run dev
 
 
 
+https://github.com/thisismrsanjay/anime-vault/assets/37665041/63cf41de-7bab-4ee1-8eb5-fa1204eed39b
+
+
+
 
 
 ## TODO 
